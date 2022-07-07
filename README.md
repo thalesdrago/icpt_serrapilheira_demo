@@ -1,8 +1,9 @@
 # 2022 Scientific Computing Intro
 Hello
-Welcome! This is a demo repository with the example of a data analysis' project using R.
+Welcome! This is a demo repository with the example of a data analysis' project using R,
+part of the scientific computing course of Serrapilheira/ICTP's Course on Quantitative Biology
 
-## Project structure
+## Recomended project structure
 
 ```
 project/
@@ -16,3 +17,5 @@ project/
 *    └── README.md
 ```
 In the `R` directory you will find the scripts. Let's start using R!
+
+## 
