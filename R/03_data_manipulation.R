@@ -6,7 +6,7 @@
 #-----------------------------------------------------------#
 
 # loading needed packages
-library(tidyverse)
+library(tidyverse) # has actually many functions, dplyr, tidyr
 library(reshape2)
 
 
@@ -26,7 +26,7 @@ files_path
 file_names <- gsub(".csv", "", basename(files_path), fixed = TRUE)
 for (i in 1:length(files_path)) {
   data <- read.csv(files_path[[i]])
-  assign(file_names[i], data)
+  assign(file_names[i], data)        # useful for loops where you rename things
 }
 
 
@@ -96,7 +96,7 @@ coord$Sites <- as.factor(coord$Sites)
 
 # Joining `coord` and `envir`
 
-# Let's then apply the `merge` function.
+# Let's then apply the `merge` function. Since we do not have all.y or all.x argument, this will be the defatul, which is inner join
 envir_coord <- merge(x = envir,
                      y = coord,
                      by = "Sites")
@@ -148,13 +148,15 @@ colnames(traits)[1] <- "TaxCode"
 
 comm_traits <- merge(comm_sp, traits, by = "TaxCode")
 head(comm_traits)
-
 # Table `comm_traits` and `envir_coord`
 
 # We are almost in the end, we will now bind the environmental data (already containing the coordinates) to the community table using the column `Sites`.
 
 comm_total <- merge(comm_traits, envir_coord, by = "Sites")
 head(comm_total)
+
+# Creating a directory
+if(!dir.exists("data/processed")) dir.create("data/processed")
 
 # Finally, we end our script writing the modified table. We will use the function `write.csv()`.
 write.csv(x = comm_total,
