@@ -163,7 +163,11 @@ write.csv(x = comm_total,
           file = "data/processed/03_Pavoine_full_table.csv",
           row.names = FALSE)
 
-# Extra: filter ----------------------------------------------------------------
+# Extra: filtering data using filter function ----------------------------------------------------------------
 sp1 <- filter(comm_total, TaxCode == "sp1", Elev > 3)
 
 View(sp1)
+
+# We could do the same using just indexes, but see that this is cumbersome and harder to read
+sp1_2 <- comm_total[comm_total$TaxCode == "sp1" & comm_total$Elev > 3, ]
+# Moreover, dplyr has a similar syntax to SQL
