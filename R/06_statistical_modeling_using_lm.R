@@ -1,11 +1,11 @@
 ####### Written by Thales in July 2022
 ####### Based in the script given by Sara Mortara
 ####### Written during the course Introduction to Scientific Computation
-####### Module: Statistical modeling - Sara
+####### Module: Statistical modeling
+####### Instructor: Sara Mortara
 ####### Serrapilheira ICTP/SAIRF QBIO program
 
-####### This script simulates the random movement, based on tumbles and runs, of an E. coli
-####### and analyzes the resultant trajectories
+####### This script
 
 # --------------------------------------------------#
 # Scientific computing
