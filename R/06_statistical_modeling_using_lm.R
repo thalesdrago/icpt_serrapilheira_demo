@@ -5,7 +5,8 @@
 ####### Instructor: Sara Mortara
 ####### Serrapilheira ICTP/SAIRF QBIO program
 
-####### This script
+####### This script provides an introduction on linear models and
+####### statistical distributions
 
 # --------------------------------------------------#
 # Scientific computing
