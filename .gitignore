@@ -6,3 +6,7 @@
 
 # Avoiding adding html files
 *.html
+
+# Avoiding adding rasters and shapefiles
+data/raster/
+data/shapefiles/
