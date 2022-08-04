@@ -15,7 +15,6 @@ library(tmap)
 library(dplyr)
 library(raster)
 library(ggplot2)
-library(shape)
 
 
 data(World)
