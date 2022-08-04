@@ -10,3 +10,6 @@
 # Avoiding adding rasters and shapefiles
 data/raster/
 data/shapefiles/
+
+# Avoiding zip files
+*.zip
