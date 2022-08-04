@@ -15,6 +15,9 @@ library(tmap)
 library(dplyr)
 library(raster)
 library(ggplot2)
+library(shape)
+
+
 data(World)
 # package tmap has a syntax similar to ggplot. The functions start all with tm_. It has a sintax similar to ggplot2
 tm_shape(World) +
@@ -100,4 +103,60 @@ dir.create(path = "data/raster/", recursive = TRUE)
 tmax_data <- getData(name = "worldclim", var = "tmax", res = 10, path = "data/raster/")
 plot(tmax_data)
 
+is(tmax_data) #the data are a raster stack, several rasters piled
+dim(tmax_data)
+extent(tmax_data)
+res(tmax_data)
 
+# Thematic maps using tmaps ------------------------------------------------------------
+data("World")
+
+#syntax similar to ggplot2
+tm_shape(World) +
+  tm_polygons("economy")
+
+# Setting the mode to view
+# This mode allows for iterative maps (e.g., allowing zoom in and out)
+tmap_mode("view")
+tm_shape(World) +
+  tm_polygons("HPI")
+
+data("World", "metro", "rivers", "land")
+
+tmap_mode("plot") # resetting mode to plot
+
+# Adding multiple shapes and layers
+tm_shape(land) +
+  tm_raster("trees", palette = hcl.colors(10, palette = "viridis")) +
+tm_shape(World) +
+  tm_borders("red", lwd = .5)
+
+Neotropic <- read_sf("./data/shapefiles/Neotropic.shp")
+names(Neotropic)
+
+Indo_Malay <- read_sf("./data/shapefiles/Indo-Malay.shp")
+names(Indo_Malay)
+
+tm_shape(World) +
+  tm_polygons(col = "white") +
+tm_shape(Neotropic) +
+  tm_polygons(col = "green") +
+tm_shape(Indo_Malay) +
+  tm_polygons(col = "yellow")
+
+
+# Creating facets
+# This is the way to create a facet when you have two or more spatial objects
+# If you have different information in one spatial object
+#and want to plot them in different facets there are efficient ways to do it, see the tmap documentation to see how
+tm1 <- tm_shape(World) +
+  tm_polygons(col = "white") +
+  tm_shape(Neotropic) +
+  tm_polygons(col = "green")
+
+tm2 <- tm_shape(World) +
+  tm_polygons(col = "white") +
+  tm_shape(Indo_Malay) +
+  tm_polygons(col = "yellow")
+
+tmap_arrange(tm1, tm2)
